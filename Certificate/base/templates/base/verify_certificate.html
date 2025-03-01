@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Certificate | Lakshay Aggarwal</title>
+</head>
+<body>
+    <h2>Certificate Verification</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <label for="certificate_id">Enter Certificate ID:</label>
+        <input type="text" name="certificate_id" required>
+        <button type="submit">Verify</button>
+    </form>
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+
+    {% if certificate %}
+        <h3>Certificate Details:</h3>
+        <p><strong>Recipient:</strong> {{ certificate.user.get_full_name }}</p>
+        <p><strong>Title:</strong> {{ certificate.title }}</p>
+        <p><strong>Issued Date:</strong> {{ certificate.issued_date }}</p>
+        <p><strong>Certificate ID:</strong> {{ certificate.certificate_id }}</p>
+        <a href="{% url 'download_certificate' certificate.certificate_id %}" target="_blank">Download Certificate</a>
+    {% endif %}
+</body>
+</html>

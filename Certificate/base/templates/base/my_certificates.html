@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Certificates</title>
+</head>
+<body>
+    <h2>My Certificates</h2>
+
+    {% if certificates %}
+        <ul>
+            {% for certificate in certificates %}
+                <li>
+                    <strong>{{ certificate.title }}</strong> (Issued on: {{ certificate.issued_date }}) 
+                    <a href="{% url 'download_certificate' certificate.certificate_id %}" target="_blank">Download PDF</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>You have no certificates yet.</p>
+    {% endif %}
+
+    <form action="/logout/" method="POST">{% csrf_token %}<button type="submit">Logout</button></form>
+</body>
+</html>
