@@ -16,7 +16,6 @@ This project is a **Django-based web application** that allows organizations to 
 ## Technologies Used
 
 - **Django** (Backend Framework)
-- **Django REST Framework (DRF)** (API Development)
 - **ReportLab** (PDF Generation)
 - **SQLite / PostgreSQL** (Database)
 - **Bootstrap / Tailwind CSS** (Frontend Styling)
@@ -69,15 +68,6 @@ python manage.py runserver
 ### Viewing Certificates:
 
 - Users can log in to view and download their issued certificates.
-
-## API Endpoints
-
-| Endpoint                      | Method | Description                     |
-| ----------------------------- | ------ | ------------------------------- |
-| `/api/certificates/`          | GET    | List all certificates           |
-| `/api/certificates/<id>/`     | GET    | Retrieve a specific certificate |
-| `/api/certificates/generate/` | POST   | Generate a new certificate      |
-| `/api/certificates/verify/`   | POST   | Verify a certificate by ID      |
 
 ## Future Enhancements
 
