@@ -46,6 +46,9 @@ source venv/bin/activate  # On Windows use: venv\Scripts\activate
 # Install dependencies
 pip install -r requirements.txt
 
+# Go to project Directory
+cd Certificate
+
 # Apply migrations
 python manage.py migrate
 
