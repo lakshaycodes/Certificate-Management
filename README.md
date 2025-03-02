@@ -2,6 +2,10 @@
 
 ## Overview
 
+![Generated Certificate](Certificate/certificates/fd393NDJrt.pdf)  
+*Example of a generated certificate*
+
+
 This project is a **Django-based web application** that allows organizations to **generate, distribute, and verify certificates** efficiently. Users can upload details, generate certificates in bulk, and verify issued certificates using a unique certificate ID.
 
 ## Features
@@ -79,4 +83,6 @@ python manage.py runserver
 ## License
 
 This project is open-source and available under the MIT License.
+
+
 
