@@ -1,37 +1,42 @@
-import os
-from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
-from django.conf import settings
+from reportlab.lib.pagesizes import landscape, A4
+from reportlab.lib.utils import ImageReader
+from reportlab.lib import colors
 
-def generate_certificate_pdf(certificate):
-    # Define the directory path for storing certificates
-    cert_dir = os.path.join(settings.MEDIA_ROOT, "certificates")
+def generate_certificate_pdf(name, course, certificate_id):
+    file_path = f"certificates/{certificate_id}.pdf"
+    c = canvas.Canvas(file_path, pagesize=landscape(A4))
     
-    # Ensure the directory exists
-    if not os.path.exists(cert_dir):
-        os.makedirs(cert_dir)
-
-    # Define file path
-    file_path = os.path.join(cert_dir, f"{certificate.user.username}_{certificate.certificate_id}.pdf")
-
-    # Generate PDF
-    c = canvas.Canvas(file_path, pagesize=letter)
-    c.setFont("Helvetica-Bold", 20)
-
-    # Certificate Title
-    c.drawString(200, 700, "Certificate of Achievement")
-
-    # Recipient Name
+    width, height = landscape(A4)
+    
+    # Background
+    c.setFillColor(colors.lightgrey)
+    c.rect(30, 30, width-60, height-60, stroke=1, fill=0)
+    
+    # Title
+    c.setFillColor(colors.black)
+    c.setFont("Times-Bold", 36)
+    c.drawCentredString(width/2, height-100, "Certificate of Completion")
+    
+    # Name
+    c.setFont("Helvetica-Bold", 30)
+    c.drawCentredString(width/2, height-200, name)
+    
+    # Course Details
+    c.setFont("Helvetica", 20)
+    c.drawCentredString(width/2, height-250, f"Has successfully completed the course:")
+    c.setFont("Helvetica-Bold", 22)
+    c.drawCentredString(width/2, height-280, course)
+    
+    # Certificate ID & Date
     c.setFont("Helvetica", 16)
-    c.drawString(200, 650, f"Awarded to: {certificate.user.get_full_name()}")
-
-    # Course Title
-    c.drawString(200, 600, f"For completing: {certificate.title}")
-
-    # Issued Date & ID
-    c.drawString(200, 550, f"Issued on: {certificate.issued_date}")
-    c.drawString(200, 500, f"Certificate ID: {certificate.certificate_id}")
-
+    c.drawCentredString(width/2, height-350, f"Certificate ID: {certificate_id}")
+    
+    # Signature Line
+    c.line(100, 100, 300, 100)
+    c.setFont("Helvetica", 14)
+    c.drawString(100, 80, "Authorized Signature")
+    
     # Save PDF
     c.save()
     return file_path

@@ -12,7 +12,7 @@ def download_certificate(request, certificate_id):
     certificate = get_object_or_404(Certificate, certificate_id=certificate_id)
 
     # Generate the PDF dynamically
-    file_path = generate_certificate_pdf(certificate)
+    file_path = generate_certificate_pdf(certificate.user.get_full_name(), certificate.title, certificate.certificate_id)
 
     return FileResponse(open(file_path, 'rb'), content_type='application/pdf')
 
