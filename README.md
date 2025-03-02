@@ -2,7 +2,7 @@
 
 ## Overview
 
-![Generated Certificate](Certificate/certificates/fd393NDJrt.pdf)  
+![Generated Certificate](generated_certificate.png)  
 *Example of a generated certificate*
 
 
