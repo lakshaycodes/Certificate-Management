@@ -36,8 +36,8 @@ This project is a **Django-based web application** that allows organizations to 
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-repo/certificate-system.git
-cd certificate-system
+git clone https://github.com/lashaycodes/Certificate-Management.git
+cd Certificate-Management
 
 # Create virtual environment
 python -m venv venv
