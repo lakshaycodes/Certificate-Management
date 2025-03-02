@@ -21,7 +21,7 @@ This project is a **Django-based web application** that allows organizations to 
 
 - **Django** (Backend Framework)
 - **ReportLab** (PDF Generation)
-- **SQLite / PostgreSQL** (Database)
+- **SQLite** (Database)
 - **Bootstrap** (Frontend Styling)
 
 ## Installation
